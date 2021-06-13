@@ -11,6 +11,7 @@ namespace Telepathy
     {
         // listener
         public TcpListener listener;
+
         public int Port { get; private set; }
         private Thread listenerThread;
 

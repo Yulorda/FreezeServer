@@ -12,10 +12,12 @@ namespace Telepathy
         // incoming message queue of <connectionId, message>
         // (not a HashSet because one connection can have multiple new messages)
         protected ConcurrentQueue<StateMessage> eventQueue = new ConcurrentQueue<StateMessage>();
+
         protected ConcurrentQueue<NetworkPackageData> packageQueue = new ConcurrentQueue<NetworkPackageData>();
 
         // queue count, useful for debugging / benchmarks
         public int EventQueueCount => eventQueue.Count;
+
         public int PackageQueueCount => packageQueue.Count;
 
         // warning if message queue gets too big
@@ -149,7 +151,7 @@ namespace Telepathy
 
         // thread receive function is the same for client and server's clients
         // (static to reduce state for maximum reliability)
-        protected static void ReceiveLoop(int connectionId, TcpClient client, ConcurrentQueue<StateMessage> receiveQueue, 
+        protected static void ReceiveLoop(int connectionId, TcpClient client, ConcurrentQueue<StateMessage> receiveQueue,
                                           ConcurrentQueue<NetworkPackageData> receivePackage, int MaxMessageSize)
         {
             // get NetworkStream from client

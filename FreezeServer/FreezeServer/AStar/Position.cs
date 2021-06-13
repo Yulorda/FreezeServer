@@ -1,5 +1,3 @@
-using System;
-
 public struct Position
 {
     public int X { get; }

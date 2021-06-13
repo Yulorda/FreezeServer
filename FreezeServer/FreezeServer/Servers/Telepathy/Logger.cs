@@ -17,7 +17,7 @@ namespace Telepathy
 
         public static void Log(string value)
         {
-            log?.Invoke(value);                  
+            log?.Invoke(value);
         }
 
         public static void LogWarning(string value)
@@ -38,7 +38,7 @@ namespace Telepathy
 
         public static void AddLogger(string loggerKey, Action<string> action)
         {
-            if(action!=null)
+            if (action != null)
             {
                 if (loggerDependence.ContainsKey(loggerKey))
                 {
@@ -48,7 +48,7 @@ namespace Telepathy
                 loggerDependence.Add(loggerKey, action);
             }
         }
-        
+
         public static void Initialize()
         {
             Logger.AddLogger("ClientConnected", (x) =>
